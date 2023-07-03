@@ -1,2 +1,14 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
+
+<h1>Posts</h1>
+<hr>
+<div>
+  {{#each posts}}
+        <img src="{{picPath}}">
+        <h3>{{picName}}</h3>
+        <a href="/post/post-details">View post details</a>
+  {{else}}
+    <p>There are no posts yet!</p>
+  {{/each}}
+</div>

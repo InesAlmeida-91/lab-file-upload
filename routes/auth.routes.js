@@ -22,7 +22,7 @@ router.get("/signup", isLoggedOut, (req, res) => res.render("auth/signup"));
 
 // .post() route ==> to process form data
 router.post("/signup", isLoggedOut, (req, res, next) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, image } = req.body;
 
   if (!username || !email || !password) {
     res.render("auth/signup", {
@@ -51,7 +51,8 @@ router.post("/signup", isLoggedOut, (req, res, next) => {
         // passwordHash => this is the key from the User model
         //     ^
         //     |            |--> this is placeholder (how we named returning value from the previous method (.hash()))
-        passwordHash: hashedPassword
+        passwordHash: hashedPassword,
+        imageUrl: req.file.path
       });
     })
     .then((userFromDB) => {
